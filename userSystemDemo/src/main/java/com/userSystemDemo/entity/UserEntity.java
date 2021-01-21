@@ -4,26 +4,26 @@ import java.util.Objects;
 
 public class UserEntity {
 
-    private String id;
+    private int id;
 
-    private String username;
+    private String userName;
 
     private String pwd;
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public void setPwd(String pwd) {
@@ -38,7 +38,7 @@ public class UserEntity {
     public String toString() {
         return "UserEntity{" +
                 "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+                ", username='" + userName + '\'' +
                 ", pwd='" + pwd + '\'' +
                 '}';
     }
@@ -48,11 +48,11 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(username, that.username) && Objects.equals(pwd, that.pwd);
+        return Objects.equals(id, that.id) && Objects.equals(userName, that.userName) && Objects.equals(pwd, that.pwd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, pwd);
+        return Objects.hash(id, userName, pwd);
     }
 }
