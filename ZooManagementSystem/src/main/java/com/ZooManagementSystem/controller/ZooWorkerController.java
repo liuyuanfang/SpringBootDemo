@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-
-//   !kX;>PM,t3pD
-
 @RestController
 @RequestMapping("/zoo/worker")
 public class ZooWorkerController {
@@ -31,10 +28,7 @@ public class ZooWorkerController {
     public ResponseEntity<?> getAllWorker(){
         List getAllWorker = null;
         try{
-            System.out.printf("开始输出......................");
             getAllWorker = zooWorkerService.getAllWorker();
-            System.out.printf(String.valueOf(getAllWorker));
-            System.out.printf("输出结束.....................");
         }  catch (Exception e){
 
         }
@@ -48,14 +42,14 @@ public class ZooWorkerController {
      */
     @PostMapping
     public ResponseEntity<?> addWorker(@RequestBody ZooWorkerEntity zooWorkerEntity){
+        ZooWorkerEntity zooWorkerInfo = null;
         try{
             /**
              * 职工姓名、职工密码，职工工号不允许为空
              */
             String workerName = zooWorkerEntity.getWorkerName();
             String pwd = zooWorkerEntity.getPwd();
-            String workerNumber = zooWorkerEntity.getWorkerNumber();
-            if(StringUtils.isBlank(workerName) || StringUtils.isBlank(pwd) || StringUtils.isBlank(workerNumber)){
+            if(StringUtils.isBlank(workerName) || StringUtils.isBlank(pwd)){
                 return new ResponseEntity("请检查职工姓名、职工密码或职工工号是否输入", HttpStatus.OK);
             }
 
@@ -63,16 +57,17 @@ public class ZooWorkerController {
              * 职工的部门、职位不能为空
              */
             String workerDeparment = zooWorkerEntity.getWorkerDepartment();
-            String workerPostion = zooWorkerEntity.getPosition();
+            String workerPostion = zooWorkerEntity.getWorkerPosition();
+
             if(StringUtils.isBlank(workerDeparment) || StringUtils.isBlank(workerPostion)){
                 return new ResponseEntity("请检查职工的部门或职工职位是否输入", HttpStatus.OK);
             }
 
-            zooWorkerService.addWorker(zooWorkerEntity);
+            zooWorkerInfo = zooWorkerService.addWorker(zooWorkerEntity);
         }  catch (Exception e){
 
         }
-        return new ResponseEntity( HttpStatus.OK);
+        return new ResponseEntity(zooWorkerInfo,HttpStatus.OK);
     }
 
     /**
@@ -90,13 +85,13 @@ public class ZooWorkerController {
 
     /**
      * 删除职工信息
+     * @param workerNumber 职工工号
      * @return
      */
-    @DeleteMapping
-    public ResponseEntity<?> deleteWorker(){
-        zooWorkerService.deleteWorker();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteWorker(@PathVariable("id") int workerNumber){
+        zooWorkerService.deleteWorker(workerNumber);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 
 
