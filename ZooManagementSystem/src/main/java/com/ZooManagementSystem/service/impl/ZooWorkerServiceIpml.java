@@ -32,19 +32,23 @@ public class ZooWorkerServiceIpml implements ZooWorkerService {
      * 增加职工信息
      */
     @Override
-    public void addWorker(ZooWorkerEntity zooWorkerEntity) {
+    public ZooWorkerEntity addWorker(ZooWorkerEntity zooWorkerEntity) {
+        ZooWorkerEntity zooWorkerInfo = null;
         try{
-
-
             String workerName = zooWorkerEntity.getWorkerName();
             String pwd = zooWorkerEntity.getPwd();
-            String workerNumber = zooWorkerEntity.getWorkerNumber();
-//            zooWorkerMapper.addWorker();
+            String workerDepartment = zooWorkerEntity.getWorkerDepartment();
+            String joinZooTime = zooWorkerEntity.getJoinZooTime();
+            String workerPosition = zooWorkerEntity.getWorkerPosition();
+            zooWorkerInfo = zooWorkerMapper.addWorker(workerName,pwd,joinZooTime,workerDepartment,workerPosition);
+
 
 
         } catch (Exception e){
 
         }
+
+        return zooWorkerInfo;
     }
 
     @Override
@@ -53,9 +57,9 @@ public class ZooWorkerServiceIpml implements ZooWorkerService {
     }
 
     @Override
-    public void deleteWorker() {
+    public void deleteWorker(int workerNumber) {
 
-//        zooWorkerMapper.deleteWorker();
+        zooWorkerMapper.deleteWorker(workerNumber);
 
     }
 }
