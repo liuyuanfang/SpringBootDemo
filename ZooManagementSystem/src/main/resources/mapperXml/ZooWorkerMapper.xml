@@ -3,4 +3,9 @@
 
 <mapper namespace="com.ZooManagementSystem.mapper.ZooWorkerMapper">
 
+<!--    查询所有动物园职工-->
+    <select id="getAllWorker" resultType="com.ZooManagementSystem.entity.ZooWorkerEntity">
+        select * from t_zoo_worker_info;
+    </select>
+
 </mapper>
