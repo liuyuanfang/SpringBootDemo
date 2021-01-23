@@ -8,9 +8,9 @@ public interface ZooWorkerService {
 
     List  getAllWorker();
 
-    void addWorker(ZooWorkerEntity zooWorkerEntity);
+    ZooWorkerEntity addWorker(ZooWorkerEntity zooWorkerEntity);
 
-    void deleteWorker();
+    void deleteWorker(int workerNumber);
 
     void updateWorker();
 
