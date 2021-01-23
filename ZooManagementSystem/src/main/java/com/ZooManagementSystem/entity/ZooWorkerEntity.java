@@ -5,11 +5,6 @@ import java.util.Objects;
 public class ZooWorkerEntity {
 
     /**
-     * 职工ID
-     */
-    private int id;
-
-    /**
      * 职工工号
      */
     private String workerNumber;
@@ -32,20 +27,12 @@ public class ZooWorkerEntity {
     /**
      * 职工在动物园的职位
      */
-    private String position;
+    private String workerPosition;
 
     /**
      * 职工所在部门
      */
     private String workerDepartment;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public void setWorkerNumber(String workerNumber) {
         this.workerNumber = workerNumber;
@@ -78,12 +65,12 @@ public class ZooWorkerEntity {
         return joinZooTime;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setWorkerPosition(String workerPosition) {
+        this.workerPosition = workerPosition;
     }
 
-    public String getPosition() {
-        return position;
+    public String getWorkerPosition() {
+        return workerPosition;
     }
 
     public void setWorkerDepartment(String workerDepartment) {
@@ -99,23 +86,22 @@ public class ZooWorkerEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ZooWorkerEntity that = (ZooWorkerEntity) o;
-        return id == that.id && Objects.equals(workerNumber, that.workerNumber) && Objects.equals(workerName, that.workerName) && Objects.equals(pwd, that.pwd) && Objects.equals(joinZooTime, that.joinZooTime) && Objects.equals(position, that.position) && Objects.equals(workerDepartment, that.workerDepartment);
+        return Objects.equals(workerNumber, that.workerNumber) && Objects.equals(workerName, that.workerName) && Objects.equals(pwd, that.pwd) && Objects.equals(joinZooTime, that.joinZooTime) && Objects.equals(workerPosition, that.workerPosition) && Objects.equals(workerDepartment, that.workerDepartment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, workerNumber, workerName, pwd, joinZooTime, position, workerDepartment);
+        return Objects.hash(workerNumber, workerName, pwd, joinZooTime, workerPosition, workerDepartment);
     }
 
     @Override
     public String toString() {
         return "ZooWorkerEntity{" +
-                "id=" + id +
-                ", workerNumber='" + workerNumber + '\'' +
+                "workerNumber='" + workerNumber + '\'' +
                 ", workerName='" + workerName + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", joinZooTime='" + joinZooTime + '\'' +
-                ", position='" + position + '\'' +
+                ", workerPosition='" + workerPosition + '\'' +
                 ", workerDepartment='" + workerDepartment + '\'' +
                 '}';
     }
